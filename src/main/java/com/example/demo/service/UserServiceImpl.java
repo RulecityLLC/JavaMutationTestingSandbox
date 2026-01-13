@@ -19,22 +19,12 @@ public class UserServiceImpl implements UserService
         this.repo = repo;
     }
 
-    /**
-     * Returns all users
-     * @return An array of all users
-     */
     @Override
     public List<User> getAll()
     {
         return repo.getAll();
     }
 
-    /**
-     * Gets a user by their id
-     * @param id The user's id
-     * @return The user object
-     * @throws NotFoundException If the user cannot be found
-     */
     @Override
     public User getById(int id) throws NotFoundException
     {
@@ -48,12 +38,6 @@ public class UserServiceImpl implements UserService
         }
     }
 
-    /**
-     * Creates a new user
-     * @param name The username
-     * @param email The user email
-     * @return The created user record
-     */
     @Override
     public User create(String name, String email)
     {

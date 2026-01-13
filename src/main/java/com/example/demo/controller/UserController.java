@@ -52,7 +52,7 @@ public class UserController
             @ApiResponse(responseCode = "200", description = "Success",
                     content = @Content) })
     @PostMapping(value = "", produces = "application/json")
-    public User createUser(@Parameter(description = "Details about the book") @RequestBody UserWithoutId user)
+    public User createUser(@Parameter(description = "Details about the user") @RequestBody UserWithoutId user)
     {
         return svc.create(user.name(), user.email());
     }
