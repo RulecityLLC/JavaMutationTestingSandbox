@@ -17,3 +17,9 @@ jobs:
     - name: Build/run unit/mutation tests
       working-directory: ${{github.workspace}}
       run: mvn test-compile org.pitest:pitest-maven:mutationCoverage
+
+    - name: Archive mutation testing results
+      uses: actions/upload-artifact@v4
+      with:
+        name: MutationTestingReport
+        path: target/pit-reports/
