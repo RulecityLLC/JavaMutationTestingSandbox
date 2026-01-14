@@ -20,6 +20,7 @@ jobs:
 
     - name: Archive mutation testing results
       uses: actions/upload-artifact@v4
+      if: always() # Runs even if build fails
       with:
         name: MutationTestingReport
         path: target/pit-reports/
