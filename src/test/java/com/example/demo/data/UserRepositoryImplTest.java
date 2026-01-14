@@ -6,6 +6,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
@@ -15,7 +19,44 @@ public class UserRepositoryImplTest
     UserRepositoryImpl instance;
 
     @Test
-    public void handleNotFoundTest() throws Throwable
+    public void getAllTest() throws Throwable
+    {
+        // ARRANGE
+
+        String name = "Ed";
+        String email = "ed@email.org";
+
+        // ACT
+
+        User created = instance.create(name, email);
+        List<User> actual = instance.getAll();
+
+        // ASSERT
+
+        assertThat(actual, hasItem(created));
+    }
+
+    @Test
+    public void getByIdTest() throws Throwable
+    {
+        // ARRANGE
+
+        String name = "Ed";
+        String email = "ed@email.org";
+
+        // ACT
+
+        User created = instance.create(name, email);
+        User actual = instance.getById(created.id());
+
+        // ASSERT
+
+        assertEquals(name, actual.name());
+        assertEquals(email, actual.email());
+    }
+
+    @Test
+    public void createTest() throws Throwable
     {
         // ARRANGE
 
@@ -31,5 +72,6 @@ public class UserRepositoryImplTest
         assertEquals(name, actual.name());
         assertEquals(email, actual.email());
     }
+
 
 }
