@@ -4,7 +4,7 @@ Sample repo showing how to enforce mutation testing threshold gates on pull requ
 ## Building
 
 ```bash
-mvn package
+mvn test
 ```
 
 ## Running unit tests
