@@ -1,0 +1,19 @@
+name: Pull request gate using java/maven
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  pr_gate:
+    runs-on:
+      # adjust this for your specific environment
+      group: MullRunnerGroup
+      labels: self-hosted
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build/run unit/mutation tests
+      working-directory: ${{github.workspace}}
+      run: mvn test-compile org.pitest:pitest-maven:mutationCoverage
