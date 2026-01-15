@@ -42,4 +42,10 @@ public class UserRepositoryImpl implements UserRepository
         users.add(newUser);
         return newUser;
     }
+
+    @Override
+    public void deleteById(int id)
+    {
+        users.remove(id);
+    }
 }
