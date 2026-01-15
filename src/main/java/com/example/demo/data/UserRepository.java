@@ -11,4 +11,6 @@ public interface UserRepository
     User getById(int id);
 
     User create(String name, String email);
+
+    void deleteById(int id);
 }

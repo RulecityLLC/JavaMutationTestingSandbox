@@ -28,4 +28,12 @@ public interface UserService
      * @return The created user record
      */
     User create(String name, String email);
+
+    /**
+     * Deletes a user by their id
+     * @param id The user's id
+     * @return The user object
+     * @throws NotFoundException If the user cannot be found
+     */
+    void delete(int id) throws NotFoundException;
 }
