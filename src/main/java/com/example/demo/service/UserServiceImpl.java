@@ -47,4 +47,17 @@ public class UserServiceImpl implements UserService
 
         return repo.create(name, email);
     }
+
+    @Override
+    public void delete(int id) throws NotFoundException
+    {
+        try
+        {
+            repo.deleteById(id);
+        }
+        catch (Exception ex)
+        {
+            throw new NotFoundException(ex);
+        }
+    }
 }
