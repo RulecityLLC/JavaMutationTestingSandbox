@@ -11,6 +11,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 public class UserRepositoryImplTest
@@ -73,5 +74,23 @@ public class UserRepositoryImplTest
         assertEquals(email, actual.email());
     }
 
+    @Test
+    public void deleteByIdTest() throws Throwable
+    {
+        // ARRANGE
+
+        String name = "Ed";
+        String email = "ed@email.org";
+
+        // ACT
+
+        User created = instance.create(name, email);
+        User retrieved = instance.getById(created.id());
+        instance.deleteById(created.id());
+
+        // ASSERT
+
+        assertThrows(IndexOutOfBoundsException.class, ()-> instance.getById(created.id()));
+    }
 
 }
