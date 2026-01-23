@@ -47,4 +47,20 @@ public class UserServiceImpl implements UserService
 
         return repo.create(name, email);
     }
+
+    @Override
+    public User getByName(String name) throws NotFoundException
+    {
+        List<User> all = repo.getAll();
+        List<User> result = all.stream().filter(m -> m.name().equals(name)).toList();
+        if (result.isEmpty())
+        {
+            throw new NotFoundException(null);
+        }
+        if (result.size() != 1)
+        {
+            throw new RuntimeException("More than one user has that name!");
+        }
+        return result.getFirst();
+    }
 }

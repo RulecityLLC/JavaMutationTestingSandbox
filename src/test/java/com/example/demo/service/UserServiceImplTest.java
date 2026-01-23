@@ -143,4 +143,25 @@ public class UserServiceImplTest
                 "expected an exception to be thrown");
     }
 
+    @Test
+    public void getByNameTest() throws Throwable
+    {
+        // ARRANGE
+
+        int id = 1234;
+        String name = "user's name";
+        String email = "some@email.org";
+        User user1 = new User(id, name, email);
+
+        List<User> expected = new ArrayList<>();
+        expected.add(user1);
+
+        when(mockRepo.getAll()).thenReturn(expected);
+
+        // ACT
+
+        User actual = instance.getByName(name);
+
+        // ASSERT
+    }
 }
