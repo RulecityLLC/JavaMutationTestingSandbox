@@ -28,4 +28,12 @@ public interface UserService
      * @return The created user record
      */
     User create(String name, String email);
+
+    /**
+     * Get a user by their name
+     * @param name The user's name
+     * @return The user object
+     * @throws NotFoundException If one matching user cannot be found
+     */
+    User getByName(String name) throws NotFoundException;
 }
