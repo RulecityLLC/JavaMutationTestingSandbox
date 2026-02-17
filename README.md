@@ -1,5 +1,5 @@
 # JavaMutationTestingSandbox
-Sample repo showing how to enforce mutation testing threshold gates on pull requests
+Sample repo showing how to enforce mutation testing threshold gates on pull request
 
 ## Building
 
